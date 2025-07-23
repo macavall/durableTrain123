@@ -1,4 +1,4 @@
 bin/
 obj/
 .vs/
-local.settings.json
+#local.settings.json
