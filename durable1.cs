@@ -34,11 +34,24 @@ public static class durable1
     {
         ILogger logger = executionContext.GetLogger("SayHello");
 
-        if(Environment.GetEnvironmentVariable("delay") != null && Convert.ToInt32(Environment.GetEnvironmentVariable("delay")) > 0)
+        if (Environment.GetEnvironmentVariable("error") != null && Environment.GetEnvironmentVariable("error") == "true")
+        {
+            try
+            {
+                throw new Exception();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while processing the request.");
+            }
+        }
+
+
+        if (Environment.GetEnvironmentVariable("delay") != null && Convert.ToInt32(Environment.GetEnvironmentVariable("delay")) > 0)
         {
             Thread.Sleep(Convert.ToInt32(Environment.GetEnvironmentVariable("delay")));
         }
-        
+
         logger.LogInformation("Saying hello to {name}.", name);
         return $"Hello {name}!";
     }
