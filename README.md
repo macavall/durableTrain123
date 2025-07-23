@@ -6,7 +6,7 @@ local.settings.json
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
-    "delay": "true"
+    "delay": "5000"
   }
 }
 ```
